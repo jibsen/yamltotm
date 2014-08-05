@@ -44,9 +44,10 @@ tmTheme files this usually means keeping all top level keys in the first
 file, ordered so `settings` is last. This way all further files go into
 `settings`.
 
-The dictionary is a YAML file mapping strings to their replacement. Any string
-(key or value) in the input that fully matches a key in the dictionary will be
-replaced with the corresponding value.
+The dictionary is a YAML file mapping identifiers to their replacement. In the
+strings of the input file (both key and value), `$identifier` will be replaced
+with the value of `identifier` in the dictionary. `$$` is an escape to insert
+a literal `$`.
 
 `tmtoyaml.py` converts a tmTheme file to YAML. The generated file is a simple
 dump, but can serve as a starting point.
@@ -58,35 +59,35 @@ Example
 Given a theme file
 
 ```.yaml
-name: __name__
-uuid: __uuid__
+name: $name
+uuid: $uuid
 settings:
 
 # Editor settings
 - settings:
-    background: __blue__
-    foreground: __white__
+    background: $blue
+    foreground: $white
 
 # Root groups
 - name: Comment
   scope: comment
   settings:
-    foreground: __gray__
+    foreground: $gray
 ```
 
 and a dictionary
 
 ```.yaml
-__name__: Simple Blue
-__uuid__: e42124f9-7cf8-4477-ad7b-31a7f1050504
-__blue__: '#0000FF'
-__white__: '#FFFFFF'
-__gray__: '#808080'
+name: Simple Blue
+uuid: e42124f9-7cf8-4477-ad7b-31a7f1050504
+blue: '#0000FF'
+white: '#FFFFFF'
+gray: '#808080'
 ```
 
 `yamltotm.py -d dict.yaml theme.yaml theme.tmTheme` will generate
 
-```.plist
+```.xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
