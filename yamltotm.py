@@ -27,6 +27,7 @@ def dictrepl(matchobj):
         return '$'
     else:
         return userdict[matchobj.group(1)]
+
 def str_constructor(loader, data):
     s = loader.construct_scalar(data)
     s = re.sub('\$(\$|\w+)', dictrepl, s)
