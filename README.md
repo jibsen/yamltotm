@@ -2,7 +2,7 @@
 YAML to tmTheme
 ===============
 
-Color schemes for the [TextMate][] and [SublimeText][] editors (tmTheme files)
+Color themes for the [TextMate][] and [SublimeText][] editors (tmTheme files)
 are stored as [plist][] XML, which is not the most human friendly format to
 edit and maintain.
 
@@ -14,10 +14,15 @@ using a Python script. This has a number of advantages:
  - themes can be modularized
  - allows simple templating
 
+Example themes:
+
+ - [Solarized Minimal][solarmini]
+
 [TextMate]: http://macromates.com/
 [SublimeText]: http://www.sublimetext.com/
 [plist]: http://developer.apple.com/documentation/Darwin/Reference/ManPages/man5/plist.5.html
 [YAML]: http://yaml.org/
+[solarmini]: https://github.com/jibsen/solarized_minimal
 
 
 Usage
