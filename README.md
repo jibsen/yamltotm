@@ -17,12 +17,16 @@ using a Python script. This has a number of advantages:
 Example themes:
 
  - [Solarized Minimal][solarmini]
+ - [textmate-solarized][solartm] (example fork)
+ - [SublimeColors/Solarized][solarst] (example fork)
 
 [TextMate]: http://macromates.com/
 [SublimeText]: http://www.sublimetext.com/
 [plist]: http://developer.apple.com/documentation/Darwin/Reference/ManPages/man5/plist.5.html
 [YAML]: http://yaml.org/
 [solarmini]: https://github.com/jibsen/solarized_minimal
+[solartm]: https://github.com/jibsen/textmate-solarized/tree/yamltotm_build
+[solarst]: https://github.com/jibsen/Solarized/tree/yamltotm_build
 
 
 Usage
