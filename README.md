@@ -32,6 +32,8 @@ Example themes:
 Usage
 -----
 
+The scripts are written for Python 3, and use [PyYAML](http://pyyaml.org/).
+
 `yamltotm.py` takes one or more YAML files and generates a tmTheme file. An
 optional dictionary can be provided.
 
