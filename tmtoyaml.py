@@ -11,7 +11,9 @@ Note: Uses plistlib interface introduced in Python 3.4.
 
 import argparse
 import plistlib
+
 import yaml
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Convert tmTheme to YAML.')

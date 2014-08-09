@@ -18,9 +18,12 @@ import argparse
 import fileinput
 import plistlib
 import re
+
 import yaml
 
+
 userdict = {}
+
 
 def dictrepl(matchobj):
     if matchobj.group(1) == '$':
@@ -28,10 +31,12 @@ def dictrepl(matchobj):
     else:
         return userdict[matchobj.group(1)]
 
+
 def str_constructor(loader, data):
     s = loader.construct_scalar(data)
     s = re.sub('\$(\$|\w+)', dictrepl, s)
     return s
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Convert YAML to tmTheme.')
