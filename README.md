@@ -20,6 +20,13 @@ Example themes:
  - [textmate-solarized][solartm] (example fork)
  - [SublimeColors/Solarized][solarst] (example fork)
 
+Related work:
+
+ - [CSScheme](https://github.com/FichteFoll/CSScheme/)
+ - [Relaxdiego Sublime Tools](https://github.com/relaxdiego/relaxdiego-sublime-tools)
+ - [SerializedDataConverter](https://github.com/facelessuser/SerializedDataConverter)
+ - [tmTheme Editor](http://tmtheme-editor.herokuapp.com/)
+
 [TextMate]: http://macromates.com/
 [SublimeText]: http://www.sublimetext.com/
 [plist]: http://developer.apple.com/documentation/Darwin/Reference/ManPages/man5/plist.5.html
