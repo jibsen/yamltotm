@@ -3,8 +3,8 @@
 """
 Convert YAML to tmTheme format.
 
-Reads a theme in YAML format and outputs tmTheme plist format used in
-TextMate and Sublime Text.
+Reads files YAML format and outputs tmTheme plist format used in TextMate and
+Sublime Text.
 
 Input files are concatenated.
 
@@ -93,9 +93,9 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Convert YAML to tmTheme.')
     parser.add_argument('-d', '--dict', type=argparse.FileType('r'),
                         help='YAML dictionary file')
-    parser.add_argument('infile', nargs='+', help='YAML theme file')
+    parser.add_argument('infile', nargs='+', help='YAML scheme file')
     parser.add_argument('outfile', type=argparse.FileType('wb'),
-                        help='tmTheme theme file')
+                        help='tmTheme scheme file')
     args = parser.parse_args()
 
     # if user supplied a dictionary, read it and add our own constructor
@@ -110,7 +110,7 @@ if __name__ == '__main__':
 
     # load YAML and write tmTheme plist
     try:
-        theme = yaml.safe_load(''.join(_mf.lines))
+        scheme = yaml.safe_load(''.join(_mf.lines))
     except yaml.YAMLError as e:
         if hasattr(e, 'problem_mark'):
             name, line = _mf.lookup_line(e.problem_mark.line)
@@ -118,4 +118,4 @@ if __name__ == '__main__':
         else:
             print('YAML error:', e)
     else:
-        plistlib.dump(theme, args.outfile)
+        plistlib.dump(scheme, args.outfile)
