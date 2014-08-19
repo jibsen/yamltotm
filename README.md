@@ -2,7 +2,7 @@
 YAML to tmTheme
 ===============
 
-Color themes for the [TextMate][] and [SublimeText][] editors (tmTheme files)
+Color schemes for the [TextMate][] and [SublimeText][] editors (tmTheme files)
 are stored as [plist][] XML, which is not the most human friendly format to
 edit and maintain.
 
@@ -11,10 +11,10 @@ using a Python script. This has a number of advantages:
 
  - easy for humans to read and modify
  - little structural overhead
- - themes can be modularized
+ - schemes can be modularized
  - allows simple templating
 
-Example themes:
+Example schemes:
 
  - [Solarized Minimal][solarmini]
  - [textmate-solarized][solartm] (example fork)
@@ -49,8 +49,8 @@ optional dictionary can be provided.
     Convert YAML to tmTheme.
 
     positional arguments:
-      infile                YAML theme file
-      outfile               tmTheme theme file
+      infile                YAML scheme file
+      outfile               tmTheme scheme file
 
     optional arguments:
       -h, --help            show this help message and exit
@@ -74,7 +74,7 @@ dump, but can serve as a starting point.
 Example
 -------
 
-Given a theme file
+Given a scheme file
 
 ```.yaml
 name: $name
@@ -103,7 +103,7 @@ white: '#FFFFFF'
 gray: '#808080'
 ```
 
-`yamltotm.py -d dict.yaml theme.yaml theme.tmTheme` will generate
+`yamltotm.py -d dict.yaml scheme.yaml scheme.tmTheme` will generate
 
 ```.xml
 <?xml version="1.0" encoding="UTF-8"?>
