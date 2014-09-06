@@ -47,8 +47,14 @@ FileRange = collections.namedtuple('FileRange', 'lo hi name')
 
 
 class MultiFile:
-    """
-    Array of lines from multiple files.
+    """List of lines from multiple files.
+
+    Args:
+        filenames: List of filenames.
+        mode: File open mode.
+
+    Attributes:
+        lines: List of lines from all files.
     """
 
     def __init__(self, filenames=None, mode='r'):
@@ -61,10 +67,11 @@ class MultiFile:
         return iter(self.lines)
 
     def add_files(self, filenames, mode='r'):
-        """
-        Add lines from files to end of MultiFile.
+        """Add lines from files to end of MultiFile.
 
-        :param filenames: List of filenames
+        Args:
+            filenames: List of filenames.
+            mode: File open mode.
         """
         base = len(self.lines)
         for name in filenames:
@@ -74,12 +81,13 @@ class MultiFile:
                 base = len(self.lines)
 
     def lookup_line(self, n):
-        """
-        Look up filename and line number from line index.
+        """Look up filename and line number from line index.
 
-        :param n: Absolute index of line (starting at 0)
-        :rtype: (str, int) or None
-        :return: Filename and line number (starting at 1)
+        Args:
+            n: Absolute index of line (starting at 0).
+
+        Returns:
+            (str, int) or None: Filename and line number (starting at 1).
         """
         for f in self._files:
             if n >= f.lo and n < f.hi:
