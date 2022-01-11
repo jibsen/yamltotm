@@ -44,17 +44,20 @@ The scripts are written for Python 3, and use [PyYAML](http://pyyaml.org/).
 `yamltotm.py` takes one or more YAML files and generates a tmTheme file. An
 optional dictionary can be provided.
 
-    usage: yamltotm.py [-h] [-d DICT] infile [infile ...] outfile
+```
+usage: yamltotm.py [-h] [-r] [-d DICT] infile [infile ...] outfile
 
-    Convert YAML to tmTheme.
+Convert YAML to tmTheme.
 
-    positional arguments:
-      infile                YAML scheme file
-      outfile               tmTheme scheme file
+positional arguments:
+  infile                YAML scheme file
+  outfile               tmTheme scheme file
 
-    optional arguments:
-      -h, --help            show this help message and exit
-      -d DICT, --dict DICT  YAML dictionary file
+options:
+  -h, --help            show this help message and exit
+  -r, --raw             Do not convert to tmTheme, but output the raw populated scheme.
+  -d DICT, --dict DICT  YAML dictionary file
+```
 
 All input files are concatenated before they are processed, so it is important
 to divide files in a way that maintains the structure of the content. For

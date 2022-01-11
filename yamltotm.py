@@ -111,15 +111,21 @@ def dictrepl(matchobj):
 def str_constructor(loader, data):
     s = loader.construct_scalar(data)
     try:
-        s = re.sub('\$(\$|\w+)', dictrepl, s)
+        s = subst_string(s)
     except KeyError as e:
         name, line = _mf.lookup_line(data.start_mark.line)
         print('KeyError in "{}", line {}:'.format(name, line), e)
     return s
 
 
+def subst_string(line):
+    return re.sub('\$(\$|\w+)', dictrepl, line)
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Convert YAML to tmTheme.')
+    parser.add_argument('-r', '--raw', action='store_true',
+                        help='Do not convert to tmTheme, but output the raw populated scheme.')
     parser.add_argument('-d', '--dict', type=argparse.FileType('r'),
                         help='YAML dictionary file')
     parser.add_argument('infile', nargs='+', help='YAML scheme file')
@@ -137,14 +143,17 @@ if __name__ == '__main__':
     # read YAML input files into MultiFile
     _mf.add_files(args.infile)
 
-    # load YAML and write tmTheme plist
-    try:
-        scheme = yaml.safe_load(''.join(_mf.lines))
-    except yaml.YAMLError as e:
-        if hasattr(e, 'problem_mark'):
-            name, line = _mf.lookup_line(e.problem_mark.line)
-            print('YAML error in "{}", line {}:'.format(name, line), e)
-        else:
-            print('YAML error:', e)
+    if args.raw:
+        args.outfile.writelines([subst_string(line).encode('utf-8') for line in _mf.lines])
     else:
-        plistlib.dump(scheme, args.outfile)
+        # load YAML and write tmTheme plist
+        try:
+            scheme = yaml.safe_load(''.join(_mf.lines))
+        except yaml.YAMLError as e:
+            if hasattr(e, 'problem_mark'):
+                name, line = _mf.lookup_line(e.problem_mark.line)
+                print('YAML error in "{}", line {}:'.format(name, line), e)
+            else:
+                print('YAML error:', e)
+        else:
+            plistlib.dump(scheme, args.outfile)
