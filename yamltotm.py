@@ -119,7 +119,7 @@ def str_constructor(loader, data):
 
 
 def subst_string(line):
-    return re.sub('\$(\$|\w+)', dictrepl, line)
+    return re.sub(r'\$(\$|\w+)', dictrepl, line)
 
 
 if __name__ == '__main__':
